@@ -8,4 +8,8 @@
     grid-auto-columns: 80px 10fr;
 }
 
+.App-content{
+    grid-area: content;
+    background-color: cornsilk;
+}
 

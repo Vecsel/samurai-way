@@ -11,7 +11,7 @@ export const Post = (props:messagesProps) => {
         <div className={cont.content}>
             <img src={"https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg"}/>
             {props.messages}
-            <button>Like</button>
+            <button className={cont.button}>Like</button>
             {props.likes}
 
         </div>
