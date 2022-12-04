@@ -3,7 +3,7 @@ import cont from "./Post.module.css"
 
 type messagesProps={
     messages: string
-    likes?: number
+    likesCount?: number
 }
 
 export const Post = (props:messagesProps) => {
@@ -12,7 +12,7 @@ export const Post = (props:messagesProps) => {
             <img src={"https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg"}/>
             {props.messages}
             <button className={cont.button}>Like</button>
-            {props.likes}
+            {props.likesCount}
 
         </div>
     )

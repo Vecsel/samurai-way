@@ -3,15 +3,23 @@ import cont from "./MyPost.module.css"
 import {Post} from "../Post/Post";
 
 export const MyPost = () => {
+    let postData = [
+        {id: 1, post: "Hi, how are you?", likesCount:50},
+        {id: 2, post: "Hi, is is my first post", likesCount:60},
+
+    ]
     return (
         <div className={cont.content}>
 
-            <div>My posts
+            <div>
+                <h3>My posts</h3>
                 <div>your news</div>
                 <textarea></textarea>
-                <button>Send</button>
-                <Post messages={"Hi, how are you?"} likes={50}/>
-                <Post messages={"Hi, is is my first post"} likes={60}/>
+                <div>
+                    <button>Send</button>
+                </div>
+                <Post messages={postData[0].post} likesCount={postData[0].likesCount}/>
+                <Post messages={postData[1].post} likesCount={postData[1].likesCount}/>
             </div>
 
         </div>

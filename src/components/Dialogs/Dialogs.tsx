@@ -31,6 +31,11 @@ export const Dialogs = () => {
         {id: 4, name: "Sveta"},
 
     ]
+    let dialogsElements = [
+        <UserMess name={dialogsData[0].name} id={dialogsData[0].id}/>,
+        <UserMess name={dialogsData[1].name} id={dialogsData[1].id}/>,
+        <UserMess name={dialogsData[2].name} id={dialogsData[2].id}/>
+    ]
     let messagesData = [
         {id: 1, message: "Hi"},
         {id: 2, message: "Hi, go home"},
@@ -43,17 +48,18 @@ export const Dialogs = () => {
         <div>
             <div className={m.messages}>
                 <div>
-                    <UserMess name={dialogsData[0].name} id={dialogsData[0].id}/>
-                    <UserMess name={dialogsData[1].name} id={dialogsData[1].id}/>
-                    <UserMess name={dialogsData[2].name} id={dialogsData[2].id}/>
-                    <UserMess name={dialogsData[3].name} id={dialogsData[3].id}/>
+                    {dialogsElements}
 
+                    {/*<UserMess name={dialogsData[0].name} id={dialogsData[0].id}/>
+                    <UserMess name={dialogsData[1].name} id={dialogsData[1].id}/>
+                    <UserMess name={dialogsData[2].name} id={dialogsData[2].id}/>*/}
                 </div>
                 <div>
-                    <Message message={messagesData[0].message}/>
+                    {/*<Message message={messagesData[0].message}/>
                     <Message message={messagesData[1].message}/>
-                    <Message message="Hi, Go cinema"/>
-                    <Message message="Yo"/>
+                    <Message message={messagesData[2].message}/>
+                    <Message message={messagesData[3].message}/>*/}
+
 
                 </div>
             </div>
