@@ -4,11 +4,20 @@ import {MyPost} from "./MyPost/MyPost";
 import {Post} from "./Post/Post";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
-export const Profile = () => {
+type indexProps={
+    id:number
+    post:string
+    likesCount:number
+}
+type postIndex={
+    post:indexProps[]
+}
+
+export const Profile = (props:postIndex) => {
     return (
         <div >
             <ProfileInfo/>
-            <MyPost/>
+            <MyPost post={props.post}/>
 
         </div>
     )
