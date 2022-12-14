@@ -1,4 +1,4 @@
-import React from "react";
+import React, {RefObject} from "react";
 import m from "./Dialogs.module.css"
 import {NavLink} from "react-router-dom";
 import {Message} from "./Message/Message";
@@ -35,6 +35,11 @@ export const Dialogs = (props:DialogsIndex) => {
         {id: 4, message: "Yo"},
     ]*/
      let messagesElements= props.messages.map(m=><Message message={m.message}/>)
+    const newMessageEl:RefObject<HTMLTextAreaElement>=React.createRef()
+    const sendMessage=()=>{
+         let text=newMessageEl.current?.value
+        alert(text)
+    }
     return (
         <div>
             <div className={m.messages}>
@@ -51,8 +56,8 @@ export const Dialogs = (props:DialogsIndex) => {
                     <Message message={messagesData[1].message}/>
                     <Message message={messagesData[2].message}/>
                     <Message message={messagesData[3].message}/>*/}
-
-
+                    <textarea ref={newMessageEl}></textarea>
+                    <button onClick={sendMessage}>Send</button>
                 </div>
             </div>
 

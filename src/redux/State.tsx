@@ -1,4 +1,5 @@
 import React from 'react';
+import {rerenderEntireTree} from "../rerenderEntiteTree";
 
 export type StateType = {
     profilePage: ProfileType
@@ -47,6 +48,13 @@ export let State: StateType = {
             {id: 4, message: "Yo"},
         ]
     }
+}
+export let addPost=(post:string)=>{
+    let NewPost={
+        id:5, post:post, likesCount:0
+    }
+    State.profilePage.postData.push(NewPost)
+    rerenderEntireTree(State)
 }
 
 

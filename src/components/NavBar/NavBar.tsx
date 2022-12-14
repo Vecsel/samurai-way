@@ -2,6 +2,7 @@ import React from "react";
 import n from "./NavBar.module.css"
 import {NavLink} from "react-router-dom";
 
+
 export const NavBar = () => {
     return (
         <nav className={n.nav}>
@@ -20,6 +21,7 @@ export const NavBar = () => {
             <div className={n.item}>
                 <NavLink to="/settings" activeClassName={n.active}>Settings</NavLink>
             </div>
+
         </nav>
     )
 }

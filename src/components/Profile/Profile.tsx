@@ -11,13 +11,14 @@ type indexProps={
 }
 type postIndex={
     post:indexProps[]
+    addPost:(post:string)=>void
 }
 
 export const Profile = (props:postIndex) => {
     return (
         <div >
             <ProfileInfo/>
-            <MyPost post={props.post}/>
+            <MyPost post={props.post} addPost={props.addPost}/>
 
         </div>
     )

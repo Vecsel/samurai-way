@@ -8,6 +8,7 @@ import {Profile} from "./components/Profile/Profile";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
+
 import {DialogsType, MessagesType, PostType, StateType} from "./redux/State";
 
 /*type indexProps={
@@ -17,6 +18,7 @@ import {DialogsType, MessagesType, PostType, StateType} from "./redux/State";
 }*/
 type AppPropsType={
     state:StateType
+    addPost:(post:string)=>void
 }
 /*type indexPropsDialog={
     id:number
@@ -35,11 +37,12 @@ const App = (props:AppPropsType) => {
                 <Header/>
                 <NavBar/>
                 <div className="App-content">
-                    <Route path="/profile" render={()=><Profile post={props.state.profilePage.postData}/>}/>
+                    <Route path="/profile" render={()=><Profile post={props.state.profilePage.postData} addPost={props.addPost}/>}/>
                     <Route path="/messages" render={()=><Dialogs dialogs={props.state.messagesPage.dialogsData} messages={props.state.messagesPage.messagesData}/>} />
                     <Route path="/news" component={News}/>
                     <Route path="/music" component={Music}/>
                     <Route path="/settings" component={Settings}/>
+
                 </div>
             </div>
         </BrowserRouter>
