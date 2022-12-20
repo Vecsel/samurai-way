@@ -18,7 +18,8 @@ import {DialogsType, MessagesType, PostType, StateType} from "./redux/State";
 }*/
 type AppPropsType={
     state:StateType
-    addPost:(post:string)=>void
+    addPost:()=>void
+    updateNewPostText:(newText:string)=>void
 }
 /*type indexPropsDialog={
     id:number
@@ -37,7 +38,7 @@ const App = (props:AppPropsType) => {
                 <Header/>
                 <NavBar/>
                 <div className="App-content">
-                    <Route path="/profile" render={()=><Profile post={props.state.profilePage.postData} addPost={props.addPost}/>}/>
+                    <Route path="/profile" render={()=><Profile post={props.state.profilePage.postData} addPost={props.addPost} newPostText={props.state.profilePage.newPostText} updateNewPostText={props.updateNewPostText}/>}/>
                     <Route path="/messages" render={()=><Dialogs dialogs={props.state.messagesPage.dialogsData} messages={props.state.messagesPage.messagesData}/>} />
                     <Route path="/news" component={News}/>
                     <Route path="/music" component={Music}/>

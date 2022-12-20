@@ -9,7 +9,9 @@ type indexProps={
 }
 type postIndex={
     post:indexProps[]
-    addPost:(post:string)=>void
+    addPost:()=>void
+    newPostText:string
+    updateNewPostText:(newText:string)=>void
 
 }
 export const MyPost = (props:postIndex) => {
@@ -18,20 +20,23 @@ export const MyPost = (props:postIndex) => {
 
     const newPostEl:RefObject<HTMLTextAreaElement>=React.createRef()
     const onAddPost=()=>{
+            props.addPost()
+
+
+    }
+    const updateText=()=>{
         let text=newPostEl.current?.value
-        console.log(text)
         if(text){
-            props.addPost(text)
+            props.updateNewPostText(text)
         }
     }
-
     return (
         <div className={cont.content}>
 
             <div>
                 <h3>My posts</h3>
                 <div>your news</div>
-                <textarea ref={newPostEl}></textarea>
+                <textarea ref={newPostEl} onChange={updateText} value={props.newPostText}/>
                 <div>
                     <button onClick={onAddPost}>Send</button>
                 </div>

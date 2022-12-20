@@ -20,7 +20,7 @@ export type DialogsType = {
 }
 export type ProfileType={
     postData:PostType[]
-
+    newPostText:string
 }
 export type MessagesPage={
     messagesData:MessagesType[],
@@ -32,6 +32,7 @@ export let State: StateType = {
             {id: 1, post: "Hi, how are you?", likesCount: 50},
             {id: 2, post: "Hi, is is my first post", likesCount: 60}
         ],
+        newPostText:"it"
 
     },
     messagesPage: {
@@ -49,11 +50,17 @@ export let State: StateType = {
         ]
     }
 }
-export let addPost=(post:string)=>{
+export let addPost=()=>{
     let NewPost={
-        id:5, post:post, likesCount:0
+        id:5, post:State.profilePage.newPostText, likesCount:0
     }
     State.profilePage.postData.push(NewPost)
+    State.profilePage.newPostText=""
+    rerenderEntireTree(State)
+}
+
+export let updateNewPostText=(newText:string)=>{
+    State.profilePage.newPostText=newText
     rerenderEntireTree(State)
 }
 
