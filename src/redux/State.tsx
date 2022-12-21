@@ -1,5 +1,9 @@
 import React from 'react';
-import {rerenderEntireTree} from "../rerenderEntiteTree";
+
+
+let rerenderEntireTree=(props:StateType)=>{
+    console.log("state change")
+}
 
 export type StateType = {
     profilePage: ProfileType
@@ -64,4 +68,6 @@ export let updateNewPostText=(newText:string)=>{
     rerenderEntireTree(State)
 }
 
-
+export const subscribe=(observer:(props:StateType)=>void)=>{
+    rerenderEntireTree=observer
+}
