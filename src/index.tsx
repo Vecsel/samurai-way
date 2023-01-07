@@ -3,7 +3,7 @@ import React from 'react';
 import './index.css';
 import {addPost, State, StateType, subscribe, updateNewPostText} from "./redux/State";
 import ReactDOM from "react-dom";
-import App from "./App";
+import {App} from "./App";
 
 export let rerenderEntireTree=(State:StateType)=>{
     ReactDOM.render(
