@@ -21,8 +21,6 @@ export const MyPost = (props:postIndex) => {
     const newPostEl:RefObject<HTMLTextAreaElement>=React.createRef()
     const onAddPost=()=>{
             props.addPost()
-
-
     }
     const updateText=()=>{
         let text=newPostEl.current?.value
