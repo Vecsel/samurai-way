@@ -9,7 +9,7 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 
-import {DialogsType, MessagesType, PostType, StateType} from "./redux/State";
+import {ActionsTypes, DialogsType, MessagesType, PostType, StateType} from "./redux/State";
 
 /*type indexProps={
     id:number
@@ -18,8 +18,7 @@ import {DialogsType, MessagesType, PostType, StateType} from "./redux/State";
 }*/
 type AppPropsType={
     state:StateType
-    addPost:()=>void
-    updateNewPostText:(newText:string)=>void
+    dispatch:(action:ActionsTypes)=>void
 }
 /*type indexPropsDialog={
     id:number
@@ -39,7 +38,7 @@ export const App = (props:AppPropsType) => {
                 <NavBar/>
                 <div className="App-content">
                     <Routes>
-                        <Route path="/profile" element={<Profile post={props.state.profilePage.postData} addPost={props.addPost} newPostText={props.state.profilePage.newPostText} updateNewPostText={props.updateNewPostText}/>}></Route>
+                        <Route path="/profile" element={<Profile post={props.state.profilePage.postData} dispatch={props.dispatch} newPostText={props.state.profilePage.newPostText} />}></Route>
                         <Route path="/messages" element={<Dialogs dialogs={props.state.messagesPage.dialogsData} messages={props.state.messagesPage.messagesData}/>}> </Route>
                         <Route path="/news" element={<News/>}></Route>
                         <Route path="/music" element={Music}></Route>
