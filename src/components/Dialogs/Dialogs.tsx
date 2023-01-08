@@ -1,13 +1,11 @@
-import React, {RefObject} from "react";
+import React, {ChangeEvent, RefObject} from "react";
 import m from "./Dialogs.module.css"
-import {NavLink} from "react-router-dom";
 import {Message} from "./Message/Message";
 import {UserMess} from "./DialogItem/DialogItem";
 import {
     ActionsTypes,
     addMessageActionCreator,
     updateNewMessagesTextActionCreator,
-    updateNewPostTextActionCreator
 } from "../../redux/State";
 
 type indexProps = {
@@ -43,12 +41,10 @@ export const Dialogs = (props: DialogsIndex) => {
         {id: 4, message: "Yo"},
     ]*/
     let messagesElements = props.messages.map(m => <Message message={m.message}/>)
-    const newMessageEl: RefObject<HTMLTextAreaElement> = React.createRef()
-    const updateMessagesText = () => {
-        let text = newMessageEl.current?.value
-        if (text !== undefined) {
-            props.dispatch(updateNewMessagesTextActionCreator(text))
-        }
+
+    const updateMessagesText = (e:ChangeEvent<HTMLTextAreaElement>) => {
+        let text = e.target.value
+        props.dispatch(updateNewMessagesTextActionCreator(text))
     }
     const sendMessage = () => {
         props.dispatch(addMessageActionCreator())
@@ -69,7 +65,7 @@ export const Dialogs = (props: DialogsIndex) => {
                     <Message message={messagesData[1].message}/>
                     <Message message={messagesData[2].message}/>
                     <Message message={messagesData[3].message}/>*/}
-                    <textarea ref={newMessageEl} onChange={updateMessagesText} value={props.newMessageText}></textarea>
+                    <textarea onChange={updateMessagesText} value={props.newMessageText}></textarea>
                     <button onClick={sendMessage}>Send</button>
                 </div>
             </div>
