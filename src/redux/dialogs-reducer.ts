@@ -4,6 +4,7 @@ import {ActionsTypes, MessagesPage} from "./State";
 export const dialogsReducer=(state: MessagesPage, action: ActionsTypes)=>{
     switch (action.type) {
         case "ADD-MESSAGE":
+
             let NewMessage = {
                 id: 5, message: state.newMessageText
             }
@@ -16,4 +17,14 @@ export const dialogsReducer=(state: MessagesPage, action: ActionsTypes)=>{
         default:
             return state
     }
+}
+export const addMessageActionCreator=()=>{
+    return{
+        type:"ADD-MESSAGE"
+    } as const
+}
+export const updateNewMessagesTextActionCreator=(text:string)=>{
+    return{
+        type:"UPDATE-NEW-MESSAGE",newMessage:text
+    } as const
 }

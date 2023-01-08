@@ -16,3 +16,14 @@ export const profileReducer = (state: ProfileType, action: ActionsTypes) => {
             return state
     }
 }
+export const addPostActionCreator=()=>{
+    return{
+        type:"ADD-POST"
+    } as const
+}
+
+export const updateNewPostTextActionCreator=(newText:string)=>{
+    return{
+        type: "UPDATE-NEW-POST-TEXT", newText:newText
+    }as const
+}

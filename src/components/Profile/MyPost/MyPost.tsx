@@ -1,7 +1,8 @@
 import React, {RefObject} from "react";
 import cont from "./MyPost.module.css"
 import {Post} from "../Post/Post";
-import {ActionsTypes, addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/State";
+import { addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
+import {ActionsTypes} from "../../../redux/State";
 
 type indexProps={
     id:number

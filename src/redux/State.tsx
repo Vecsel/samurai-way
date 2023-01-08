@@ -1,5 +1,5 @@
-import {profileReducer} from "./profile-reducer";
-import {dialogsReducer} from "./dialogs-reducer";
+import {addPostActionCreator, profileReducer, updateNewPostTextActionCreator} from "./profile-reducer";
+import {addMessageActionCreator, dialogsReducer, updateNewMessagesTextActionCreator} from "./dialogs-reducer";
 
 export type ActionsTypes=ReturnType<typeof addPostActionCreator> |
     ReturnType<typeof updateNewPostTextActionCreator>|
@@ -38,27 +38,6 @@ export type MessagesPage={
     dialogsData:DialogsType[]
     newMessageText:string
 }
-export const addPostActionCreator=()=>{
-    return{
-        type:"ADD-POST"
-    } as const
-}
-
-export const updateNewPostTextActionCreator=(newText:string)=>{
-    return{
-        type: "UPDATE-NEW-POST-TEXT", newText:newText
-    }as const
-}
-export const addMessageActionCreator=()=>{
-    return{
-        type:"ADD-MESSAGE"
-    } as const
-}
-export const updateNewMessagesTextActionCreator=(text:string)=>{
-    return{
-        type:"UPDATE-NEW-MESSAGE",newMessage:text
-    } as const
-}
 
 
 export let store:StoreType={
@@ -87,7 +66,7 @@ export let store:StoreType={
         newMessageText:"Hi"
     }
 },
-    _callSubscriber(){
+    _callSubscriber(state:StateType){
         console.log("state change")
     },
     getState(){
@@ -99,12 +78,8 @@ export let store:StoreType={
 
 
     dispatch: function (action) {
-
-        if (this._state.profilePage !== undefined) {
             this._state.profilePage = profileReducer(this._state.profilePage, action)
-        } else if (this._state.messagesPage !== undefined) {
             this._state.messagesPage = dialogsReducer(this._state.messagesPage, action)
-        }
         this._callSubscriber(this._state)
 
     }

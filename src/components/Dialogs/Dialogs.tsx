@@ -1,12 +1,12 @@
-import React, {ChangeEvent, RefObject} from "react";
+import React, {ChangeEvent} from "react";
 import m from "./Dialogs.module.css"
 import {Message} from "./Message/Message";
 import {UserMess} from "./DialogItem/DialogItem";
 import {
-    ActionsTypes,
     addMessageActionCreator,
     updateNewMessagesTextActionCreator,
-} from "../../redux/State";
+} from "../../redux/dialogs-reducer";
+import {ActionsTypes} from "../../redux/State";
 
 type indexProps = {
     id: number
