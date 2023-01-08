@@ -12,7 +12,6 @@ type indexProps={
 }
 type postIndex={
     post:indexProps[]
-
     newPostText:string
     dispatch:(action:ActionsTypes)=>void
 }

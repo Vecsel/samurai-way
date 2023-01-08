@@ -38,8 +38,14 @@ export const App = (props:AppPropsType) => {
                 <NavBar/>
                 <div className="App-content">
                     <Routes>
-                        <Route path="/profile" element={<Profile post={props.state.profilePage.postData} dispatch={props.dispatch} newPostText={props.state.profilePage.newPostText} />}></Route>
-                        <Route path="/messages" element={<Dialogs dialogs={props.state.messagesPage.dialogsData} messages={props.state.messagesPage.messagesData}/>}> </Route>
+                        <Route path="/profile" element={<Profile post={props.state.profilePage.postData}
+                                                                 dispatch={props.dispatch}
+                                                                 newPostText={props.state.profilePage.newPostText} />}></Route>
+                        <Route path="/messages" element={<Dialogs dialogs={props.state.messagesPage.dialogsData}
+                                                                  messages={props.state.messagesPage.messagesData}
+                                                                  dispatch={props.dispatch}
+                                                                  newMessageText={props.state.messagesPage.newMessageText}
+                        />}> </Route>
                         <Route path="/news" element={<News/>}></Route>
                         <Route path="/music" element={Music}></Route>
                         <Route path="/settings" element={Settings}></Route>

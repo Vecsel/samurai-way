@@ -11,6 +11,7 @@ export const UserMess = (props: UserMess) => {
     return (
         <div className={m.userMessage}>
             <NavLink to={path}>{props.name} </NavLink>
+
         </div>
     )
 }

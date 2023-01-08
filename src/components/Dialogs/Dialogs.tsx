@@ -3,21 +3,29 @@ import m from "./Dialogs.module.css"
 import {NavLink} from "react-router-dom";
 import {Message} from "./Message/Message";
 import {UserMess} from "./DialogItem/DialogItem";
+import {
+    ActionsTypes,
+    addMessageActionCreator,
+    updateNewMessagesTextActionCreator,
+    updateNewPostTextActionCreator
+} from "../../redux/State";
 
-type indexProps={
-    id:number
-    name:string
+type indexProps = {
+    id: number
+    name: string
 }
-type DialogsIndex={
-    dialogs:indexProps[]
-    messages:indexPropsMessages[]
+type DialogsIndex = {
+    dialogs: indexProps[]
+    messages: indexPropsMessages[]
+    dispatch: (action: ActionsTypes) => void
+    newMessageText: string
 }
-type indexPropsMessages={
-    id:number
-    message:string
+type indexPropsMessages = {
+    id: number
+    message: string
 }
 
-export const Dialogs = (props:DialogsIndex) => {
+export const Dialogs = (props: DialogsIndex) => {
 
     /*let dialogsData = [
         {id: 1, name: "Viktor"},
@@ -25,7 +33,7 @@ export const Dialogs = (props:DialogsIndex) => {
         {id: 3, name: "Alex"},
         {id: 4, name: "Sveta"},
     ]*/
-    let dialogsElements = props.dialogs.map(d=>(<UserMess name={d.name} id={d.id}/> ))
+    let dialogsElements = props.dialogs.map(d => (<UserMess name={d.name} id={d.id}/>))
 
 
     /*let messagesData = [
@@ -34,11 +42,16 @@ export const Dialogs = (props:DialogsIndex) => {
         {id: 3, message: "Hi, Go cinema"},
         {id: 4, message: "Yo"},
     ]*/
-     let messagesElements= props.messages.map(m=><Message message={m.message}/>)
-    const newMessageEl:RefObject<HTMLTextAreaElement>=React.createRef()
-    const sendMessage=()=>{
-         let text=newMessageEl.current?.value
-        alert(text)
+    let messagesElements = props.messages.map(m => <Message message={m.message}/>)
+    const newMessageEl: RefObject<HTMLTextAreaElement> = React.createRef()
+    const updateMessagesText = () => {
+        let text = newMessageEl.current?.value
+        if (text !== undefined) {
+            props.dispatch(updateNewMessagesTextActionCreator(text))
+        }
+    }
+    const sendMessage = () => {
+        props.dispatch(addMessageActionCreator())
     }
     return (
         <div>
@@ -56,7 +69,7 @@ export const Dialogs = (props:DialogsIndex) => {
                     <Message message={messagesData[1].message}/>
                     <Message message={messagesData[2].message}/>
                     <Message message={messagesData[3].message}/>*/}
-                    <textarea ref={newMessageEl}></textarea>
+                    <textarea ref={newMessageEl} onChange={updateMessagesText} value={props.newMessageText}></textarea>
                     <button onClick={sendMessage}>Send</button>
                 </div>
             </div>

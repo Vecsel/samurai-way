@@ -1,7 +1,7 @@
 import React, {RefObject} from "react";
 import cont from "./MyPost.module.css"
 import {Post} from "../Post/Post";
-import {ActionsTypes} from "../../../redux/State";
+import {ActionsTypes, addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/State";
 
 type indexProps={
     id:number
@@ -14,18 +14,21 @@ type postIndex={
     dispatch:(action:ActionsTypes)=>void
 
 }
+
+
+
 export const MyPost = (props:postIndex) => {
 
     let postElements=props.post.map(p=><Post messages={p.post} likesCount={p.likesCount}/>)
 
     const newPostEl:RefObject<HTMLTextAreaElement>=React.createRef()
     const onAddPost=()=>{
-            props.dispatch({type:"ADD-POST"})
+            props.dispatch(addPostActionCreator())
     }
     const updateText=()=>{
         let text=newPostEl.current?.value
-        if(text){
-            props.dispatch({type:"UPDATE-NEW-POST-TEXT", newText:text})
+        if(text!==undefined){
+            props.dispatch(updateNewPostTextActionCreator(text))
         }
     }
     return (
